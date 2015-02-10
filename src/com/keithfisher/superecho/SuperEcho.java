@@ -2,8 +2,6 @@ package com.keithfisher.superecho;
 
 import com.noelportugal.amazonecho.AmazonEchoApi;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashMap;
 
 
 public class SuperEcho {

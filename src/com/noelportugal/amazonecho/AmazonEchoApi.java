@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.LogManager;
 import java.util.logging.Logger;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHeaders;
@@ -47,14 +49,15 @@ public class AmazonEchoApi {
     private final String PASSWORd;
     private final HttpClient httpclient = HttpClientBuilder.create().build();
     private String LastText = "";
-    //static final Logger log= new Logger();
-    
+
+    private final Logger fLogger = Logger.getLogger(this.getClass().getPackage().getName());
 
     public AmazonEchoApi(String base_url, String username, String password) {
-        
+
         this.BASE_URL = base_url;
         this.USERNAME = username;
         this.PASSWORd = password;
+        fLogger.setLevel(Level.OFF);
     }
 
     public String httpGet(String url) {
@@ -163,7 +166,7 @@ public class AmazonEchoApi {
         Object obj = JSONValue.parse(output);
         JSONObject jsonObject = (JSONObject) obj;
         JSONArray values = (JSONArray) jsonObject.get("cards");
-//System.out.println(values.size()); 
+//System.out.println(values.size());
 
         JSONObject item = (JSONObject) values.get(0);
 
@@ -183,8 +186,8 @@ public class AmazonEchoApi {
 
     public String getLatestHistory() throws IOException {
         String output = httpGet("/api/activities?startTime=&size=1&offset=-1");
-      //System.out.println(output);
-        
+        //System.out.println(output);
+        fLogger.log(Level.INFO, output);
 
         // Parse JSON
         Object obj = JSONValue.parse(output);
@@ -192,6 +195,7 @@ public class AmazonEchoApi {
         JSONArray values = (JSONArray) jsonObject.get("activities");
         JSONObject item = (JSONObject) values.get(0);
         String text = item.get("description").toString();
+        fLogger.log(Level.INFO, text.toString());
 //Get the summary text
         Object obj2 = JSONValue.parse(text);
         JSONObject jsonObject2 = (JSONObject) obj2;

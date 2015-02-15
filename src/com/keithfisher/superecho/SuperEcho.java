@@ -14,7 +14,7 @@ public class SuperEcho {
     
     public static void main(String[] args) throws IOException, InterruptedException {
         
-        amazonEchoApi = new AmazonEchoApi("https://pitangui.amazon.com", "keithfisher@gmail.com", "za");
+        amazonEchoApi = new AmazonEchoApi("https://pitangui.amazon.com", "keithfisher@gmail.com", "zaphod");
         amazonEchoApi.httpLogin();
         insteonHub = new Insteon("173.227.35.146", "25105", "password", "admin");
         parser = new Parser();
@@ -29,10 +29,10 @@ public class SuperEcho {
 
             if (command != null) {
                 //Parse the command      
-                System.out.println("command=" + command);
+                System.out.println("Command=" + command);
                 parser.parseCommand(command);
             } else {
-                System.out.println("No new commands");
+                System.out.println("No new command");
             }
 
             Thread.sleep(5000);

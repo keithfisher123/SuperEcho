@@ -15,9 +15,8 @@ import java.util.StringTokenizer;
 public class Parser {
 
     public String[] Actions = {"on", "off", "up", "down"};
-    public String[] Actors = {"living", "kitchen", "bedroom"};
+    public String[] Actors = {"living", "kitchen", "bedroom", "movie", "romance", "party"};
     public String[] Validators = {"light", "lights", "mode", "watch"};
-    public String[] Modes = {"movie", "romance", "party"};
 
     public void parseCommand(String Command) {
         boolean isAction = false;
@@ -26,13 +25,10 @@ public class Parser {
         String actor = "";
         boolean hasValidator = false;
         String validator = "";
-        boolean isMode = false;
-        String mode = "";
 
-        //This methos will try and parse the command
+        //This method will try and parse the command
         //make lower case
         Command = Command.toLowerCase();
-
         //Loop over our command words and see if it contains actor,action and validator words (in any order)
         for (StringTokenizer stringTokenizer = new StringTokenizer(Command); stringTokenizer.hasMoreTokens();) {
             String token = stringTokenizer.nextToken();
@@ -49,17 +45,13 @@ public class Parser {
                 hasValidator = true;
                 validator = token;
             };
-            if (Arrays.asList(Modes).contains(token)) {
-                isMode = true;
-                mode = token;
-            };
         }
-
-        System.out.print("action= " + action);
-        System.out.print(" actor= " + actor);
-        System.out.print(" mode=" + mode);
-        System.out.println(" validator= " + validator);
-
+        if (isActor) {
+            System.out.println("Command Understood!");
+            System.out.print("      Action= " + action);
+            System.out.print(" With Actor= " + actor);
+            System.out.println(" With validator= " + validator);
+        }
     }
 
 }

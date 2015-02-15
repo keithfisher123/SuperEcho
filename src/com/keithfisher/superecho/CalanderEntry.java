@@ -5,7 +5,7 @@
  */
 package com.keithfisher.superecho;
    
-    
+ /*   
 import com.google.api.services.calendar.Calendar;
 import com.google.api.services.calendar.model.Event;
 import com.google.api.client.http.HttpTransport;
@@ -19,11 +19,11 @@ import com.google.api.services.calendar.model.*;
  * @author fisherk
  */
 public class CalanderEntry {
-    
+}
  
 
 // ...
-
+/*
 // Initialize Calendar service with valid OAuth credentials
 Calendar service = new Calendar.Builder(httpTransport, jsonFactory, credentials)
     .setApplicationName("applicationName").build();
@@ -36,3 +36,4 @@ Event createdEvent =
 System.out.println(createdEvent.getId());
     
 }
+*/

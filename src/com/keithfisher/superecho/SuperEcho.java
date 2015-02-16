@@ -14,7 +14,7 @@ public class SuperEcho {
     
     public static void main(String[] args) throws IOException, InterruptedException {
         
-        amazonEchoApi = new AmazonEchoApi("https://pitangui.amazon.com", "keithfisher@gmail.com", "zaphod");
+        amazonEchoApi = new AmazonEchoApi("https://pitangui.amazon.com", "keithfisher@gmail.com", "");
         amazonEchoApi.httpLogin();
         insteonHub = new Insteon("173.227.35.146", "25105", "password", "admin");
         parser = new Parser();
